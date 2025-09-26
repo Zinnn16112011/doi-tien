@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đổi tiền USD → VND</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 400px; margin: auto; }
+        input, button { padding: 10px; font-size: 16px; margin-top: 10px; width: 100%; }
+        .result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Chương trình đổi tiền USD → VND</h2>
+    <input type="number" id="usd" placeholder="Nhập số USD">
+    <button onclick="convert()">Đổi</button>
+    <div class="result" id="result"></div>
+
+    <script>
+        const rate = 26400; // 1 USD = 26,400 VND
+
+        function convert() {
+            const usd = document.getElementById('usd').value;
+            if(usd === "" || usd <= 0){
+                alert("Nhập số USD hợp lệ!");
+                return;
+            }
+            const vnd = usd * rate;
+            const vndFormatted = vnd.toLocaleString('vi-VN'); // thêm dấu phẩy
+            document.getElementById('result').innerText = `${usd} USD = ${vndFormatted} VND`;
+        }
+    </script>
+</body>
+</html>
